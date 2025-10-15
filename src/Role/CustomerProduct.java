@@ -1,10 +1,21 @@
 package Role;
 import java.time.LocalDate;
-public class Customer_Product {
+public class CustomerProduct {
     private String customerSSN;
     private String productID;
     private LocalDate purchaseDate;
     private Boolean paid;
+    public CustomerProduct(String customerSSN, String productID, LocalDate purchaseDate){
+        this.customerSSN = customerSSN;
+        this.productID = productID;
+        this.purchaseDate = purchaseDate;
+    }
+    public String getSearchKey(){
+
+    }
+    public String lineRepresentation(){
+        return this.customerSSN + "," + this.productID + "," + this.purchaseDate + "," + this.paid;
+    }
     public String getCustomerSSN() {
         return customerSSN;
     }
