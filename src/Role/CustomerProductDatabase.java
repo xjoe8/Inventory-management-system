@@ -1,6 +1,5 @@
 package Role;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 public class CustomerProductDatabase {
@@ -24,9 +23,21 @@ public class CustomerProductDatabase {
                 this.records.add(record);
             }
             rd.close();
-        }catch (Exception e){
+        } catch (FileNotFoundException e){
+            System.out.println("File not Found.");
+        } catch (IOException e){
             System.out.println("Error in reading file.");
         }
+    }
+    public CustomerProduct createRecordFrom(String line){
+        String[] parts = line.split(",\\s*");
+        return new CustomerProduct(parts[0], parts[1], LocalDate.parse(parts[2]));
+    }
+    public ArrayList<CustomerProduct> returnAllRecords(){
+        return this.records;
+    }
+    public boolean contains(String key){
+
     }
     public CustomerProduct getRecord(String key){
         for(CustomerProduct cp: this.records){
@@ -36,21 +47,27 @@ public class CustomerProductDatabase {
         }
         return null;
     }
-    public ArrayList<CustomerProduct> returnAllRecords(){
-
-    }
-    public CustomerProduct createRecordFrom(String line){
-        String[] parts = line.split(",\\s*");
-        return new CustomerProduct(parts[0], parts[1], LocalDate.parse(parts[2]));
+    public void insertRecord(CustomerProduct record){
+        this.records.add(record);
     }
     public void deleteRecord(String key){
         CustomerProduct record = getRecord(key);
         this.records.remove(record);
     }
-    public void insertRecord(CustomerProduct record){
-        this.records.add(record);
-    }
     public void saveToFile(){
-
+        try(BufferedWriter wr = new BufferedWriter(new FileWriter(this.fileName, false))){
+            String numOfRecords = Integer.toString(this.records.size());
+            wr.write(numOfRecords);
+            wr.newLine();
+            for (int i=0; i<this.records.size(); i++){
+                String line = this.records.get(i).lineRepresentation();
+                wr.write(line);
+                wr.newLine();
+            }
+        }catch (FileNotFoundException e){
+            System.out.println("File Location error.");
+        }catch (IOException e){
+            System.out.println("Error in writing file.");
+        }
     }
 }
