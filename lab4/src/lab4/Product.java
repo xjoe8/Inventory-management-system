@@ -24,12 +24,12 @@ public class Product {
         this.quantity = quantity;
         this.price = price;
     }
-
-    public String getProductID() {
+    // for product id
+    public String getSearchkey() {
         return productID;
     }
 
-    public void setProductID(String productID) {
+    public void setSearchkey(String productID) {
         this.productID = productID;
     }
 
