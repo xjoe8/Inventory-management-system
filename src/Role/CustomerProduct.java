@@ -10,32 +10,32 @@ public class CustomerProduct {
         this.productID = productID;
         this.purchaseDate = purchaseDate;
     }
-    public String getSearchKey(){
-
-    }
-    public String lineRepresentation(){
-        return this.customerSSN + "," + this.productID + "," + this.purchaseDate + "," + this.paid;
-    }
     public String getCustomerSSN() {
         return customerSSN;
-    }
-    public void setCustomerSSN(String customerSSN) {
-        this.customerSSN = customerSSN;
     }
     public String getProductID() {
         return productID;
     }
-    public void setProductID(String productID) {
-        this.productID = productID;
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+    public String lineRepresentation(){
+        return this.customerSSN + "," + this.productID + "," + this.purchaseDate + "," + this.paid;
     }
     public Boolean isPaid() {
         return paid;
     }
+    public String getSearchKey(){
+
+    }
     public void setPaid(Boolean paid) {
         this.paid = paid;
     }
-    public LocalDate getPurchaseDate() {
-        return purchaseDate;
+    public void setCustomerSSN(String customerSSN) {
+        this.customerSSN = customerSSN;
+    }
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
     public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;

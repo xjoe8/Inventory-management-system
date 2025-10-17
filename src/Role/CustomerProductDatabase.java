@@ -37,11 +37,16 @@ public class CustomerProductDatabase {
         return this.records;
     }
     public boolean contains(String key){
-
+        for (CustomerProduct cp: this.records){
+            if (cp.lineRepresentation().contains(key)){
+                return true;
+            }
+        }
+        return false;
     }
     public CustomerProduct getRecord(String key){
         for(CustomerProduct cp: this.records){
-            if(cp.getCustomerSSN().equals(key)){
+            if(cp.lineRepresentation().contains(key)){
                 return new CustomerProduct(cp.getCustomerSSN(), cp.getProductID(), cp.getPurchaseDate());
             }
         }
