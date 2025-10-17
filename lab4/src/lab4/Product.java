@@ -9,10 +9,10 @@ package lab4;
  * @author basma
  */
 public class Product {
-    String productID;
-    String productName;
-    String manufacturerName;
-    String supplierName;
+    private String productID;
+    private String productName;
+    private String manufacturerName;
+    private String supplierName;
     private int quantity;
     private float price;
     
@@ -75,7 +75,7 @@ public class Product {
     
     
     public String lineRepresentation(){
-        return productID + "," + productName + "," + manufacturerName + "," + supplierName + "," + "quantity" + "," + "price";
+        return productID + "," + productName + "," + manufacturerName + "," + supplierName + "," + quantity + "," + price;
     }
     
     
