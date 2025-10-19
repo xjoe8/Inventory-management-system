@@ -1,10 +1,14 @@
-package Role;
+package lab4;
 import java.time.LocalDate;
-public class CustomerProduct {
-    private String customerSSN;
+import java.time.format.DateTimeFormatter;
+
+public class CustomerProduct implements Storable {
+    
+    String customerSSN;
     private String productID;
-    private LocalDate purchaseDate;
+    LocalDate purchaseDate;
     private Boolean paid;
+    
     public CustomerProduct(String customerSSN, String productID, LocalDate purchaseDate){
         this.customerSSN = customerSSN;
         this.productID = productID;
@@ -19,15 +23,22 @@ public class CustomerProduct {
     public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
-    public String lineRepresentation(){
-        return this.customerSSN + "," + this.productID + "," + this.purchaseDate + "," + this.paid;
-    }
     public Boolean isPaid() {
         return paid;
     }
-    public String getSearchKey(){
-
+    
+    
+    @Override
+    public String lineRepresentation(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return this.customerSSN + "," + this.productID + "," + this.purchaseDate.format(formatter) + "," + this.paid;
     }
+    @Override
+    public String getSearchKey() {
+        return this.customerSSN + "," + this.productID + "," + this.purchaseDate.toString();
+    }
+    
+    
     public void setPaid(Boolean paid) {
         this.paid = paid;
     }
