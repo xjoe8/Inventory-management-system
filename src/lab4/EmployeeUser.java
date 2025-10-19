@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Employee;
+package lab4;
 
 /**
  *
  * @author User
  */
-public class EmployeeUser {
+public class EmployeeUser implements Storable {
 
     private String employeeId, name, email, address, phoneNumber;
 

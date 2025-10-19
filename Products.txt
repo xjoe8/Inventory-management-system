@@ -1,0 +1,4 @@
+P2394,Laptop,Apple,TechSupplier,10,1500.0
+P2001,Phone,Samsung,MegaSupplier,8,900.0
+P3500,Headphones,Sony,AudioWorld,15,250.0
+P2394,Laptop,Apple,TechSupplier,10,1500.0
