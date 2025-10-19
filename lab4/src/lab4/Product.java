@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package lab4;
 
-/**
- *
- * @author basma
- */
-public class Product {
+public class Product implements Storable {
     private String productID;
     private String productName;
     private String manufacturerName;
     private String supplierName;
     private int quantity;
-    private float price;
+    float price;
     
     public Product(String productID, String productName, String manufacturerName, String supplierName, int quantity, float price){
         this.productID = productID;
@@ -24,11 +16,7 @@ public class Product {
         this.quantity = quantity;
         this.price = price;
     }
-    // for product id
-    public String getSearchkey() {
-        return productID;
-    }
-
+    
     public void setSearchkey(String productID) {
         this.productID = productID;
     }
@@ -74,11 +62,15 @@ public class Product {
     }
     
     
+    @Override
     public String lineRepresentation(){
         return productID + "," + productName + "," + manufacturerName + "," + supplierName + "," + quantity + "," + price;
     }
     
-    
+    @Override
+    public String getSearchKey() {
+        return productID;
+    }
     
 }
 
