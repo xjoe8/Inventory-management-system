@@ -17,9 +17,9 @@ public class EmployeeRole {
     }
 
     public void addProduct(String productID, String productName, String manufacturerName, String supplierName, int quantity, double price) {
-        Product product = new Product(productID, productName, manufacturerName, supplierName, quantity, price);
+        Product product = new Product(productID, productName, manufacturerName, supplierName, quantity, (float) price);
         this.productsDatabase.insertRecord(product);
-        this.ProductDatabase.saveToFile();
+        this.productsDatabase.saveToFile();
     }
 
     public Product[] getListOfProducts() {
@@ -69,10 +69,10 @@ public class EmployeeRole {
             System.out.println("Error : purchase with key : " + key + " is not found.");
             return -1;
         }
-        int daysBetween = ChronoUnit.DAYS.between(purchaseDate, returnDate);
+        int daysBetween = (int) ChronoUnit.DAYS.between(purchaseDate, returnDate);
         if ( daysBetween > 14 ) {
             System.out.println("Error : More than 14 days have passed since the purchase date.");
-            retrun -1;
+            return -1;
         }
         Product returnedProduct = this.productsDatabase.getRecord(productID);
         returnedProduct.setQuantity(returnedProduct.getQuantity()+1);
@@ -110,3 +110,5 @@ public class EmployeeRole {
         this.customerProductDatabase.saveToFile();
     }
 }
+
+

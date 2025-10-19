@@ -56,9 +56,6 @@ public abstract class Database<T extends Storable> {
         }
     }
     
-    public abstract String getSearchKey();
-    public abstract String lineRepresentation();
-    
     public abstract T createRecordFrom(String line);
     
     public ArrayList<T> returnAllRecords(){
