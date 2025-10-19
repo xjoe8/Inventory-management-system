@@ -1,76 +1,30 @@
 package lab4;
 
-public class Product implements Storable {
-    private String productID;
-    private String productName;
-    private String manufacturerName;
-    private String supplierName;
-    private int quantity;
-    float price;
+public class ProductDatabase extends Database<Product> {    
     
-    public Product(String productID, String productName, String manufacturerName, String supplierName, int quantity, float price){
-        this.productID = productID;
-        this.productName = productName;
-        this.manufacturerName = manufacturerName;
-        this.supplierName = supplierName;
-        this.quantity = quantity;
-        this.price = price;
-    }
-    
-    public void setSearchkey(String productID) {
-        this.productID = productID;
+    public ProductDatabase(String filename){
+        super(filename);
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getManufacturerName() {
-        return manufacturerName;
-    }
-
-    public void setManufacturerName(String manufacturerName) {
-        this.manufacturerName = manufacturerName;
-    }
-
-    public String getSupplierName() {
-        return supplierName;
-    }
-
-    public void setSupplierName(String supplierName) {
-        this.supplierName = supplierName;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-    
-    
     @Override
-    public String lineRepresentation(){
-        return productID + "," + productName + "," + manufacturerName + "," + supplierName + "," + quantity + "," + price;
-    }
-    
-    @Override
-    public String getSearchKey() {
-        return productID;
+    public Product createRecordFrom(String line){
+         String[] s = line.split(",");
+         if(s.length != 6){
+             return null;
+        }
+         try{
+            String productID = s[0].trim();
+            String productName = s[1].trim();
+            String manufacturerName = s[2].trim();
+            String supplierName = s[3].trim();
+            int q = Integer.parseInt(s[4].trim());
+            float p = Float.parseFloat(s[5].trim());
+            
+            return new Product(productID, productName, manufacturerName , supplierName, q, p);
+        }
+        catch (NumberFormatException ex){
+        return null;
+        }
     }
     
 }
-
